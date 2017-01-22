@@ -22,12 +22,13 @@ function geoJsonMapProvider(Private) {
 		template: require('plugins/geoJsonMap/geojsonmap_vis.html'), // The template, that will be rendered for this visualization
 		params: {
 			editor: require('plugins/geoJsonMap/geojsonmap_editor.html'), // Use this HTML as an options editor for this vis
-			defaults: { // Set default values for paramters (that can be configured in the editor)
+			defaults: { // Set default values for paramaters (that can be configured in the editor)
 				baseLayerUrl : "https://t3.datapunt.amsterdam.nl/topo_google/{z}/{x}/{y}.png",
-				strokeColor : "#D3D3D3",
+				strokeColor : "#A0A0A0",
 				strokeWidth : 1,
 				colorMin : "#FFFFFF",
 				colorMax : "#FF0000",
+				colorSteps : 15,
 				geoJsonURL : "https://map.datapunt.amsterdam.nl/maps/gebieden?REQUEST=Getfeature&VERSION=1.1.0&SERVICE=wfs&TYPENAME=buurt&srsName=EPSG:4326&count=10000&startindex=0&outputformat=geojson",
 				geoJsonIdField : "code"
 			}
