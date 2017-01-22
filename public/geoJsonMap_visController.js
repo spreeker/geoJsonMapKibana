@@ -44,6 +44,7 @@ module.controller('geoJsonMapController', function($scope, Private) {
 			// Use the getValue function of the aggregation to get the value of a bucket
 			var key = bucket.key;
 			var value = metricsAgg.getValue(bucket);
+			// REMOVE substring to get origional vollcode 'A00a'. It is now used to join on '00a'.
 			var key = key.substring(1, 4);
 			return {
 				key : key,
