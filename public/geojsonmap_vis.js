@@ -16,8 +16,8 @@ function geoJsonMapProvider(Private) {
 	// Describe our visualization
 	return new TemplateVisType({
 		name: 'geoJsonMap', // The internal id of the visualization (must be unique)
-		title: 'Buurt kaart', // The title of the visualization, shown to the user
-		description: 'Gebieden kaart van de Gemeente Amsterdam met Leaflet.', // The description of this vis
+		title: 'WFS/GeoJson Map', // The title of the visualization, shown to the user
+		description: 'Area map of the City of Amsterdam with Leaflet and WFS/Geojson vectorlayer.', // The description of this vis
 		icon: 'fa-map', // The font awesome icon of this visualization
 		template: require('plugins/geoJsonMap/geojsonmap_vis.html'), // The template, that will be rendered for this visualization
 		params: {
@@ -34,11 +34,11 @@ function geoJsonMapProvider(Private) {
 			}
 		},
 		// Define the aggregation your visualization accepts
-		schemas: new Schemas([
+schemas: new Schemas([
 				{
 					group: 'metrics',
 					name: 'countryvalue',
-					title: 'Buurt waarde',
+					title: 'Aggregate (field) type',
 					min: 1,
 					max: 1,
 					aggFilter: ['count', 'avg', 'sum', 'min', 'max', 'cardinality', 'std_dev']
@@ -46,7 +46,7 @@ function geoJsonMapProvider(Private) {
 				{
 					group: 'buckets',
 					name: 'countries',
-					title: 'Buurtcode',
+					title: 'Field matching geojson field',
 					min: 1,
 					max: 1,
 					aggFilter: '!geohash_grid'

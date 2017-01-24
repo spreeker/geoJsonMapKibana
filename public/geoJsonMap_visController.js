@@ -45,7 +45,7 @@ module.controller('geoJsonMapController', function($scope, Private) {
 			var key = bucket.key;
 			var value = metricsAgg.getValue(bucket);
 			// REMOVE substring to get origional vollcode 'A00a'. It is now used to join on '00a'.
-			var key = key.substring(1, 4);
+			// var key = key.substring(1, 4);
 			return {
 				key : key,
 				value : value
@@ -99,8 +99,7 @@ module.controller('geoJsonMapController', function($scope, Private) {
 		var geoJsonURL = $scope.vis.params.geoJsonURL;
 		
 		//TODO add editor string "code" value to parameter field as code
-		//var geoJsonIdField = $parse('item.properties.'+ $scope.vis.params.geoJsonidField);
-		
+		var geoJsonIdField = $scope.vis.params.geoJsonIdField;
 		
 		$.when(
 		    	data,
@@ -115,8 +114,11 @@ module.controller('geoJsonMapController', function($scope, Private) {
 		    	
 		    	// Add value from hash table to geojson properties
 		    	returnGeoJson.features.forEach(function (item) {
+		    		//try { console.log('3: '+ item.properties[geoJsonIdField]); }
+					//catch(err) {}
+					
 		    		// Add item value to array of geojson by getting returnValues['02a'] for example which matches returnValue 02a: 833
-		      		item.properties.value = returnValues[item.properties.code] || 0
+		      		item.properties.value = returnValues[item.properties[geoJsonIdField]] || 0
 		    	})
 		    	console.log(returnGeoJson);
 				// use geoJson
