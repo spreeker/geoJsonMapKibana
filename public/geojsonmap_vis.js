@@ -23,13 +23,16 @@ function geoJsonMapProvider(Private) {
 		params: {
 			editor: require('plugins/geoJsonMap/geojsonmap_editor.html'), // Use this HTML as an options editor for this vis
 			defaults: { // Set default values for paramaters (that can be configured in the editor)
-				baseLayerUrl : "https://t3.datapunt.amsterdam.nl/topo_google/{z}/{x}/{y}.png",
+				baseLayerUrl : "https://{s}.datapunt.amsterdam.nl/topo_google/{z}/{x}/{y}.png",
 				strokeColor : "#A0A0A0",
 				strokeWidth : 1,
 				colorMin : "#FFFFFF",
 				colorMax : "#FF0000",
 				colorSteps : 15,
-				geoJsonURL : "https://map.datapunt.amsterdam.nl/maps/gebieden?REQUEST=Getfeature&VERSION=1.1.0&SERVICE=wfs&TYPENAME=buurt&srsName=EPSG:4326&count=10000&startindex=0&outputformat=geojson",
+				zoomLimit : false,
+				zoomLimitLevel : 15,
+				geoJsonURL : "https://map.datapunt.amsterdam.nl/maps/gebieden",
+				typeName : "buurt",
 				geoJsonIdField : "code"
 			}
 		},
@@ -46,7 +49,7 @@ schemas: new Schemas([
 				{
 					group: 'buckets',
 					name: 'countries',
-					title: 'Field matching geojson field',
+					title: 'Field (matching geojson field)',
 					min: 1,
 					max: 1,
 					aggFilter: '!geohash_grid'

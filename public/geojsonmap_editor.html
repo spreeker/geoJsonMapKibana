@@ -4,13 +4,27 @@
 </div>
 <hr>
 <div class="form-group">
-  <label>GeoJson URL</label>
+  <label>GeoJson URL (without ?)</label>
   <input type="text" ng-model="vis.params.geoJsonURL" class="form-control" />
 </div>
 <div class="form-group">
-  <label>Attribute name in Geojson matching Aggregate Field (Term)</label>
+  <label>TypeName (if using a WFS service)</label>
+  <input type="text" ng-model="vis.params.typeName" class="form-control" />
+</div>
+<div class="form-group">
+  <label>Attribute name in Geojson matching Aggregate Term</label>
   <input type="text" ng-model="vis.params.geoJsonIdField" class="form-control" />
 </div>
+<hr>
+<div class="form-group">
+  <label>Only render geojson < zoom level</label>
+  <input type="checkbox" ng-model="vis.params.zoomLimit" class="form-control" />
+</div>
+<div class="form-group">
+  <label>Zoom level</label>
+  <input type="number" ng-model="vis.params.zoomLimitLevel" class="form-control" />
+</div>
+<hr>
 <div class="form-group">
   <label>Line color</label>
   <input type="text" ng-model="vis.params.strokeColor" class="form-control" />
